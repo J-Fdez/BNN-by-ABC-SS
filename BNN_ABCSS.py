@@ -68,12 +68,12 @@ class BNN_ABCSS:
                 p = self.mlp_neurons[i+1]*self.mlp_neurons[i]
                 self.nW=self.nW+p # Number of weights
                 self.nb=self.nb+self.mlp_neurons[i+1] # Number of bias
-                # Initialization of Matrix where all parameters and metrics will
-                # be stored each simulation level (+1 is for the metric)
-                self.ABCSampAcc = np.zeros(shape = (self.N , self.nW+self.nb+1))
-                # Fill in the ABCSampAcc Matrix with the "Prior" parameters
-                for i in range(self.nW+self.nb):
-                    self.ABCSampAcc[: , i] = stats.truncnorm.rvs(-1, 1, loc=0, scale=1, size=self.N) # We fill in the ABCSampAcc Matrix with the "Prior" parameters
+            # Initialization of Matrix where all parameters and metrics will
+            # be stored each simulation level (+1 is for the metric)
+            self.ABCSampAcc = np.zeros(shape = (self.N , self.nW+self.nb+1))
+            # Fill in the ABCSampAcc Matrix with the "Prior" parameters
+            for i in range(self.nW+self.nb):
+                self.ABCSampAcc[: , i] = stats.truncnorm.rvs(-1, 1, loc=0, scale=1, size=self.N) # We fill in the ABCSampAcc Matrix with the "Prior" parameters
         else:
             with np.load(self.recover) as data:
                 self.ABCSampAcc =data['ABC_Matrix']
