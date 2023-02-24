@@ -442,7 +442,7 @@ class BNN_ABCSS:
 # save_levels - In case intermediate distributions of the parameters are required to 
 #   be stored. This may be useful to understand how the neural network learns step by step.
 
-    def train_gd_loop(self, X_train, Y_train, P0=0.2, num_sim=4, max_iter=10, start_prop_std=0.9, perc=0.5, threshold=0.007, metric='mse', save_levels=False):
+    def train_gd_loop(self, X_train, Y_train, P0=0.2, num_sim=10, max_iter=1, start_prop_std=0.9, perc=0.5, threshold=0.007, metric='mse', save_levels=False):
         
         self.metric=metric_dic[metric]
         Grad_Matrix=np.zeros(shape = (self.N , self.nW+self.nb+1))
