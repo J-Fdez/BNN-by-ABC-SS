@@ -182,8 +182,6 @@ class BNN_ABCSS:
 
     def train_loop(self, X_train, Y_train, P0=0.2, num_sim=10, max_iter=1, start_prop_std=0.9, perc=0.5, threshold=0.007, metric='mse', save_levels=False):
         
-        self.X_train=X_train
-        self.Y_train=Y_train
         self.metric=metric_dic[metric]
         if save_levels==True:
             self.ACC_Interm_SS = []
@@ -300,7 +298,7 @@ class BNN_ABCSS:
             
         return self.Ranked_ABCSamoACC
     
-    
+# Features and Hyperparameters in train_levels below:     
 # X_train and Y_train - Training data with shapes (n_data_points,n_input_features)
 #   and (n_data_points,n_output_features).
 # P0 - Conditional probability. See original manuscript for further information.
@@ -313,8 +311,7 @@ class BNN_ABCSS:
 #   be stored. This may be useful to understand how the neural network learns step by step.
     
     def train_levels(self, X_train, Y_train, P0=0.2, simlevls=10, save_levels=False, metric='mse'):
-        self.X_train=X_train
-        self.Y_train=Y_train
+   
         self.metric=metric_dic[metric]
         if save_levels==True:
             self.ACC_Interm_SS = []
@@ -447,8 +444,6 @@ class BNN_ABCSS:
 
     def train_gd_loop(self, X_train, Y_train, P0=0.2, num_sim=4, max_iter=10, start_prop_std=0.9, perc=0.5, threshold=0.007, metric='mse', save_levels=False):
         
-        self.X_train=X_train
-        self.Y_train=Y_train
         self.metric=metric_dic[metric]
         Grad_Matrix=np.zeros(shape = (self.N , self.nW+self.nb+1))
         if save_levels==True:
