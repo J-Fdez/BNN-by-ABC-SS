@@ -73,7 +73,7 @@ class BNN_ABCSS:
             self.ABCSampAcc = np.zeros(shape = (self.N , self.nW+self.nb+1))
             # Fill in the ABCSampAcc Matrix with the "Prior" parameters
             for i in range(self.nW+self.nb):
-                self.ABCSampAcc[: , i] = stats.truncnorm.rvs(-1, 1, loc=0, scale=1, size=self.N) # We fill in the ABCSampAcc Matrix with the "Prior" parameters
+                self.ABCSampAcc[: , i] = stats.truncnorm.rvs(-1, 1, loc=0, scale=1, size=self.N) 
         else:
             with np.load(self.recover) as data:
                 self.ABCSampAcc =data['ABC_Matrix']
